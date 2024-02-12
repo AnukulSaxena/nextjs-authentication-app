@@ -19,7 +19,6 @@ export default function LoginPage() {
         try {
             setLoading(true)
             const response = await axios.post("/api/users/login", user);
-            console.log(response)
             router.push("/profile")
         } catch (error) {
             console.log(error)
@@ -37,7 +36,7 @@ export default function LoginPage() {
     return (
         <div className="flex h-screen justify-center items-center">
             <div className="h-fit w-96 border border-white rounded-md p-10">
-                <h1 className=" text-center py-2 text-lg font-bold">Log In</h1>
+                <h1 className=" text-center py-2 text-lg font-bold">{loading ? "Logging In" : "Log In"}</h1>
                 <hr className="mb-10" />
                 <label className="block my-2 ps-2" htmlFor="username">Username</label>
                 <input

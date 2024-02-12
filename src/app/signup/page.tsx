@@ -30,6 +30,7 @@ export default function SignupPage() {
     }
 
     useEffect(() => {
+
         if (user.username.length > 0 && user.password.length > 0) {
             setButtonDisabled(false)
         } else {
@@ -40,7 +41,7 @@ export default function SignupPage() {
     return (
         <div className="flex h-screen justify-center items-center">
             <div className="h-fit w-96 border border-white rounded-md p-10">
-                <h1 className=" text-center py-2 text-lg font-bold">Sign Up</h1>
+                <h1 className=" text-center py-2 text-lg font-bold">{loading ? "Signing Up" : "Sign Up"}</h1>
                 <hr className="mb-10" />
                 <label className="block my-2 ps-2" htmlFor="username">Username</label>
                 <input

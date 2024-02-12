@@ -3,12 +3,7 @@ import User from "@/model/user.model"
 import { NextRequest, NextResponse } from "next/server"
 import bcrypt from "bcryptjs"
 
-
-
-
-
 connect()
-
 
 export async function POST(request: NextRequest) {
     try {
@@ -19,7 +14,6 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: "Username and Password required." },
                 { status: 400 })
         }
-        console.log(reqBody)
 
         const user = await User.findOne({ username })
         if (user) {
@@ -36,20 +30,12 @@ export async function POST(request: NextRequest) {
         })
 
         const savedUser = await newUser.save()
-        console.log(savedUser)
 
         return NextResponse.json({
             message: "User created successfully",
             success: true,
             savedUser
         })
-
-
-
-
-
-
-
     } catch (error: any) {
         return NextResponse.json({ error: error.message },
             { status: 500 })
